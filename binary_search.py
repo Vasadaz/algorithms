@@ -1,4 +1,4 @@
-def search_num(sort_nums: list[int], hidden_num: int) -> tuple[int|None, int]:
+def search_num(sort_nums: list[int], hidden_num: int) -> tuple[int | None, int]:
     min_limit = 0
     max_limit = len(sort_nums) - 1
     steps_count = 0
@@ -17,9 +17,10 @@ def search_num(sort_nums: list[int], hidden_num: int) -> tuple[int|None, int]:
 
     return None, steps_count
 
+
 if __name__ == '__main__':
     nums_100 = [num for num in range(1, 101)]
-    print(search_num(nums_100, 1)) # (1, 6)
+    print(search_num(nums_100, 1))  # (1, 6)
     print(search_num(nums_100, 100))  # (100, 7)
     print(search_num(nums_100, 101))  # (None, 7)
     print(search_num(nums_100, 26))  # (26, 6)
