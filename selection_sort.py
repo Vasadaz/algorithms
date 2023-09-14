@@ -4,11 +4,12 @@ def select_sort(items: list) -> list:
 
         for child_index in range(parent_index + 1, len(items)):
             if items[child_index] < items[min_item_index]:
-                min_index = child_index
+                min_item_index = child_index
 
         items[parent_index], items[min_item_index] = items[min_item_index], items[parent_index]
 
     return items
+
 
 if __name__ == '__main__':
     nums_5 = [5, 2, 1, 4, 3]
