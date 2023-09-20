@@ -17,25 +17,35 @@ def search_num(sort_nums: list[int], hidden_num: int) -> tuple[int | None, int]:
 
     return None, steps_count
 
+def search_num_recursive(sort_nums: list[int], hidden_num: int) -> int|None:
+    min_limit = 0
+    max_limit = len(sort_nums) - 1
 
-if __name__ == '__main__':
+    if min_limit > max_limit:
+        return None
+
+    middle_limit = max_limit // 2
+    num = sort_nums[middle_limit]
+
+    if num == hidden_num:
+        return num
+    elif num > hidden_num:
+        return search_num_recursive(sort_nums[:middle_limit], hidden_num)
+    elif num < hidden_num:
+        return search_num_recursive(sort_nums[middle_limit + 1:], hidden_num)
+
+
+def test_searching(function):
     nums_100 = [num for num in range(1, 101)]
-    print(search_num(nums_100, 1))  # (1, 6)
-    print(search_num(nums_100, 100))  # (100, 7)
-    print(search_num(nums_100, 101))  # (None, 7)
-    print(search_num(nums_100, 26))  # (26, 6)
+    print(function(nums_100, 1))
+    print(function(nums_100, 100))
+    print(function(nums_100, 101))
+    print(function(nums_100, 26))
+    print(function(nums_100, 50))
+    print(function(nums_100, 49))
     del nums_100
 
-    nums_10000 = [num for num in range(1, 10001)]
-    print(search_num(nums_10000, 1))  # (1, 13)
-    print(search_num(nums_10000, 10000))  # (10000, 14)
-    print(search_num(nums_10000, 10001))  # (None, 14)
-    print(search_num(nums_10000, 26))  # (26, 12)
-    del nums_10000
 
-    nums_100000000 = [num for num in range(1, 100000001)]
-    print(search_num(nums_100000000, 1))  # (1, 26)
-    print(search_num(nums_100000000, 100000000))  # (100000000, 27)
-    print(search_num(nums_100000000, 100000001))  # (None, 27)
-    print(search_num(nums_100000000, 26))  # (26, 25)
-    del nums_100000000
+if __name__ == '__main__':
+    test_searching(search_num)
+    test_searching(search_num_recursive)
