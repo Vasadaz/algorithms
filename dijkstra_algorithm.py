@@ -57,8 +57,8 @@ if __name__ == '__main__':
     }
 
     processed = []
-
     node = find_lowes_cost_node(costs, processed)
+
     while node is not None:
         cost = costs[node]
         neighbors = graph[node]
@@ -73,10 +73,9 @@ if __name__ == '__main__':
         processed.append(node)
         node = find_lowes_cost_node(costs, processed)
 
-
-
     child_node = 'finish'
     result_nodes = [child_node]
+
     for i in range(len(parents)):
         parent_node = parents.get(child_node)
 
